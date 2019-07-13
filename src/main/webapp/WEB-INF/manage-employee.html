@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wixis-360</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="css/skins/_all-skins.min.css">
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        .dataTables_filter {
+            text-align: right !important;
+        }
+
+        .delete{
+            padding: 5px;
+        }
+
+        table tbody tr{
+            cursor: pointer;
+        }
+
+        table tbody tr td{
+            vertical-align: middle !important;
+        }
+
+        .selected-row{
+            background-color: rgba(0, 48, 70, 0.16) !important;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>Wixis</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Wixis-360</b> SYSTEM</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MAIN NAVIGATION</li>
+
+                <li class="active">
+                    <a href="manage-employee.html">
+                        <i class="fa fa-user"></i> <span>Manage Employees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="manage-payment.html">
+                        <i class="fa fa-list"></i> <span>Manage Payment</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Manage Employee
+            </h1>
+            
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Main row -->
+            <div class="row">
+
+                <div class="col-12 col-md-4">
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Employee Information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Employee ID</label>
+                                    <input name="id" type="text" class="form-control" id="txtEmpId"
+                                           placeholder="Enter Employee ID">
+                                </div>
+                                <div class="form-group">
+                                    <label>Employee Name</label>
+                                    <input name="name" type="text" class="form-control" id="txtEmpName"
+                                           placeholder="Enter Employee Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input name="phone" type="text" class="form-control" id="txtphonenumber"
+                                           placeholder="Enter Employee phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Employee Address</label>
+                                    <input name="address" type="text" class="form-control" id="txtEmpAddress"
+                                           placeholder="Enter Employee Address">
+                                </div>
+                                
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="button" id="btnSave" class="btn btn-primary">Save</button>
+                                <button type="reset" class="btn btn-danger">Clear</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <div class="col-12 col-md-8">
+
+                    <div class="box">
+                        <div class="box-body">
+                            <table id="tblEmployee" class="table table-bordered table-hover">
+                                <colgroup>
+                                    <col style="width: 50px; text-align: center;">
+                                    <col>
+                                    <col style="width: 100px;">
+                                    <col>
+                                    <col style="width: 50px;">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center;">ID</th>
+                                    <th style="text-align: center;">Name</th>
+                                    <th style="text-align: center;">Telephone</th>
+                                    <th style="text-align: center">Address</th>
+                                    <th style="text-align: center;">
+                                        Remove
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.row (main row) -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; Wixis 360 (pvt)Ltd</strong> All rights
+        reserved.
+    </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="js/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="js/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.min.js"></script>
+<script>
+    $(function () {
+        $('#tblEmployee').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Search Employees..."
+            }
+        });
+    });
+</script>
+<script>
+
+    var SERVER_URL = " http://localhost:8080";
+
+    $("#btnSave").click(function(){
+
+        if ($("#txtEmpId").attr("disabled")){
+
+            var Employee = {
+                emp_id: $("#txtEmpId").val(),
+                emp_name: $("#txtEmpName").val(),
+                emp_mobile: $("#txtphonenumber").val(),
+                emp_address: $("#txtEmpAddress").val()
+            };
+
+            var ajaxConfig = {
+                method: "PUT",
+                url:  " http://localhost:8080/api/rest/employees" + $("#txtEmpId").val(),
+                async: true,
+                contentType: "application/json",
+                data: JSON.stringify(Employee)
+            }
+
+            $.ajax(ajaxConfig).done(function(response,statusText,jxhr){
+                alert("Updated Successfully");
+                loadAllEmployees();
+                $('button[type="reset"]').trigger("click");
+            }).fail(function(jxhr,statusText,error){
+               alert("Unable to update the Employee, try again");
+               console.log(error);
+            });
+
+        }else{
+
+            var Employee = {
+                emp_id: $("#txtEmpId").val(),
+                emp_name: $("#txtEmpName").val(),
+                emp_mobile: $("#txtphonenumber").val(),
+                emp_address: $("#txtEmpAddress").val()
+            };
+
+            var ajaxConfig = {
+                method: "POST",
+                url:  " http://localhost:8080/api/rest/employees",
+                async: true,
+                contentType: "application/json",
+                data: JSON.stringify(Employee)
+            }
+
+            $.ajax(ajaxConfig).done(function(response,statusText,jxhr){
+                alert("Added Successfully");
+                loadAllEmployees();
+                $('button[type="reset"]').trigger("click");
+            }).fail(function(jxhr,statusText,error){
+                alert("Unable to save the Employee, try again");
+                console.log(error);
+            });
+
+
+        }
+
+    });
+
+    $('button[type="reset"]').click(function(){
+       $("#tblEmployee tbody tr").removeClass("selected-row");
+        $("#txtEmpId").attr("disabled",false);
+    });
+
+    $(document).ready(function(){
+
+        loadAllEmployees();
+
+    });
+
+    function loadAllEmployees(){
+
+        $("#tblEmployee").dataTable().fnDestroy();
+        $("#tblEmployee tbody tr").remove();
+
+        var ajaxConfig = {
+            method: "GET",
+            url:" http://localhost:8080/api/rest/employees",
+            async: true,
+            contentType:"application/x-www-form-urlencoded",
+           
+        };
+
+        $.ajax(ajaxConfig).done(function(response,statusText,jxhr){
+
+        
+         
+            response.forEach(function(employee){
+            
+              
+
+                var html = `<tr>
+                                <td>${employee.emp_id}</td>
+                                <td>${employee.emp_name}</td>
+                                <td>${employee.emp_mobile}</td>
+                                <td>${employee.emp_address}</td>
+                                <td><button type="button" class="btn btn-success delete">Delete</button></td>
+                            </tr>`;
+
+                $("#tblEmployee tbody").append(html);
+
+                $("#tblEmployee tbody tr").off("click");
+                $("#tblEmployee tbody tr").click(function(){
+                    $("#tblEmployee tbody tr").removeClass("selected-row");
+                    $(this).addClass("selected-row");
+
+                    $("#txtEmpId").val($(this).find("td:first-child").text());
+                    $("#txtEmpId").attr("disabled",true);
+                    $("#txtEmpName").val($(this).find("td:nth-child(2)").text());
+                    $("#txtphonenumber").val($(this).find("td:nth-child(3)").text());
+                    $("#txtEmpAddress").val($(this).find("td:nth-child(4)").text());
+
+                });
+
+                $("button.delete").off("click");
+                $("button.delete").click(function(eventData){
+
+                    eventData.stopPropagation();
+
+                    var row = $(this).parents("tr");
+                    var employeeid = (row.find("td:first-child").text());
+
+                    if (confirm("Are you sure to delete this customer?")){
+
+                        var ajaxConfig = {
+                            method : "DELETE",
+                            url: SERVER_URL + "/api/rest/employees/" + employeeid,
+                            async: true
+                        }
+
+                        $.ajax(ajaxConfig).done(function(response,statusText,jxhr){
+
+                            $(row).remove();
+
+                        }).fail(function(jxhr,statusText,error){
+
+                            console.log(jxhr.responseText);
+
+                        });
+
+                    }
+                });
+
+            });
+
+            $('#tblEmployee').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true,
+                'pageLength'  : 5,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Employees..."
+                }
+            });
+
+        }).fail(function(jxhr,statusText,error){
+            console.log(error);
+        });
+    }
+
+</script>
+</body>
+</html>
